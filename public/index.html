@@ -199,8 +199,28 @@
       </div>
     </nav>
   </main>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('hello') === '1') {
+        document.body.innerHTML = `
+          <header style="padding:2rem;text-align:center;background:#111;color:#fff;">
+            <h1>Hello World Test</h1>
+            <p>Pages + Workers are wired. Reload without <code>?hello=1</code> to return to the normal feed.</p>
+          </header>
+          <main style="padding:2rem;text-align:center;">
+            <p>This page demonstrates a minimal build while debugging the Cloudflare preview.</p>
+            <p><a href="/" style="color:#1d4ed8;font-weight:600;">Back to the demo</a></p>
+          </main>`;
+        window.__helloMode = true;
+      }
+    })();
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/markdown-it/dist/markdown-it.min.js"></script>
   <script>
+    if (window.__helloMode) {
+      return;
+    }
     const manifestUrl = 'content/posts/manifest.json';
     const container = document.getElementById('markdown-list');
     const categoryTabs = document.getElementById('category-tabs');
