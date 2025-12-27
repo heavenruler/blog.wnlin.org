@@ -1,7 +1,6 @@
 name = "markdown-demo"
+main = "functions/index.js"
 compatibility_date = "2024-10-01"
-type = "javascript"
 
 [site]
 bucket = "./public"
-entry-point = "functions"
