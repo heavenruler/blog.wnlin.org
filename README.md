@@ -62,7 +62,7 @@ Each manifest entry now includes an `excerpt` so the feed initially shows trimme
 2. From the repo root run:
 
 ```bash
-wrangler pages dev public --local-protocol http --local-port 8787
+wrangler pages dev public --port 8787
 ```
 
 This command hosts the Pages site, automatically wiring `functions/` so `/api/latest-commit` is handled by the function.
