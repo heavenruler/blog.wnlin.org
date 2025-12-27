@@ -1,0 +1,90 @@
+{
+  "default": {
+    "label": "Default",
+    "posts": [
+      {
+        "file": "default/1.md",
+        "title": "Welcome to the blog",
+        "date": "2025-12-28",
+        "excerpt": "# Welcome to the blog\nThis default stream demonstrates how posts will render.\nTom's note: the manifest generator will self-populate metadata."
+      },
+      {
+        "file": "default/2.md",
+        "title": "Markdown-it in Pages",
+        "date": "2025-12-28",
+        "excerpt": "# Markdown-it in Pages\nPreview Markdown content with live HTML conversion."
+      },
+      {
+        "file": "default/3.md",
+        "title": "Deploying with Wrangler",
+        "date": "2025-12-28",
+        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
+      }
+    ]
+  },
+  "categories": [
+    {
+      "slug": "category11",
+      "directory": "category11",
+      "label": "category11",
+      "posts": [
+        {
+          "file": "category11/1.md",
+          "title": "Category 11 — Beta",
+          "date": "2025-12-28",
+          "excerpt": "# Category 11 — Beta\nBeta notes for new features."
+        },
+        {
+          "file": "category11/2.md",
+          "title": "Category 11 — Release",
+          "date": "2025-12-28",
+          "excerpt": "# Category 11 — Release\nRelease summary for upcoming deploy."
+        }
+      ]
+    },
+    {
+      "slug": "category2",
+      "directory": "category2",
+      "label": "category2",
+      "posts": [
+        {
+          "file": "category2/4.md",
+          "title": "Category 2 — Releases",
+          "date": "2025-12-28",
+          "excerpt": "# Category 2 — Releases\nPublic pages can now list releases with a dedicated feed."
+        },
+        {
+          "file": "category2/5.md",
+          "title": "Category 2 — Tutorials",
+          "date": "2025-12-28",
+          "excerpt": "# Category 2 — Tutorials\nWrite tutorials to show watchers how to build on Cloudflare."
+        }
+      ]
+    },
+    {
+      "slug": "category5",
+      "directory": "category5",
+      "label": "category5",
+      "posts": [
+        {
+          "file": "category5/7.md",
+          "title": "Category 5 — Advanced Topics",
+          "date": "2025-12-28",
+          "excerpt": "# Category 5 — Advanced Topics\nDive into Workers, KV, and Markdown pipelines."
+        },
+        {
+          "file": "category5/8.md",
+          "title": "Category 5 — Tooling",
+          "date": "2025-12-28",
+          "excerpt": "# Category 5 — Tooling\nUse CLI scripts to keep the manifest in sync."
+        },
+        {
+          "file": "category5/9.md",
+          "title": "Category 5 — Observability",
+          "date": "2025-12-28",
+          "excerpt": "# Category 5 — Observability\nTrack Worker events with durability and logging."
+        }
+      ]
+    }
+  ]
+}
