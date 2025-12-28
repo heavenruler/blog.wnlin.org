@@ -68,10 +68,10 @@
       }
       .main-grid {
         display: grid;
-        grid-template-columns: minmax(420px, 44vw) 1fr;
+        grid-template-columns: 1fr minmax(420px, 44vw);
         grid-template-areas:
-          "posts viewer"
-          "categories viewer";
+          "viewer posts"
+          "viewer categories";
         gap: 1.1rem;
         align-items: start;
       }
@@ -267,9 +267,9 @@
         .main-grid {
           grid-template-columns: 1fr;
           grid-template-areas:
+            "viewer"
             "posts"
-            "categories"
-            "viewer";
+            "categories";
         }
         .column {
           padding: 1rem;
