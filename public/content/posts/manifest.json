@@ -17,6 +17,27 @@
         "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
       },
       {
+        "file": "default/4.md",
+        "title": "Deploying with Wrangler",
+        "date": "2025-12-28",
+        "updated": "2025/12/28 15:40",
+        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
+      },
+      {
+        "file": "default/5.md",
+        "title": "Deploying with Wrangler",
+        "date": "2025-12-28",
+        "updated": "2025/12/28 15:40",
+        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
+      },
+      {
+        "file": "default/6.md",
+        "title": "Deploying with Wrangler",
+        "date": "2025-12-28",
+        "updated": "2025/12/28 15:40",
+        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
+      },
+      {
         "file": "default/1.md",
         "title": "Markdown Feature Showcase",
         "date": "2025-12-01",
@@ -27,19 +48,19 @@
   },
   "categories": [
     {
-      "slug": "category11",
-      "directory": "category11",
-      "label": "category11",
+      "slug": "a_cat中文",
+      "directory": "a_cat中文",
+      "label": "a_cat中文",
       "posts": [
         {
-          "file": "category11/1.md",
+          "file": "a_cat中文/1.md",
           "title": "Category 11 — Beta",
           "date": "2025-12-28",
           "updated": "2025/12/28 12:43",
           "excerpt": "# Category 11 — Beta\nBeta notes for new features."
         },
         {
-          "file": "category11/2.md",
+          "file": "a_cat中文/2.md",
           "title": "Category 11 — Release",
           "date": "2025-12-28",
           "updated": "2025/12/28 12:43",
