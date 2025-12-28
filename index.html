@@ -62,14 +62,17 @@
         line-height: 1.7;
       }
       main {
-        width: min(1200px, 95vw);
+        width: min(1440px, 95vw);
         margin: 0 auto 2rem;
         padding: 0 1.25rem 3rem;
       }
       .main-grid {
         display: grid;
-        grid-template-columns: minmax(280px, 36vw) 1fr;
-        gap: 1rem;
+        grid-template-columns: minmax(420px, 44vw) 1fr;
+        grid-template-areas:
+          "posts viewer"
+          "categories viewer";
+        gap: 1.1rem;
         align-items: start;
       }
       .panel {
@@ -115,9 +118,13 @@
         border-color: rgba(255, 255, 255, 0.24);
       }
       .posts-column {
+        grid-area: posts;
         display: flex;
         flex-direction: column;
         gap: 0.85rem;
+      }
+      .categories-column {
+        grid-area: categories;
       }
       .post-list {
         display: flex;
@@ -181,6 +188,7 @@
         letter-spacing: 0.01em;
       }
       .viewer {
+        grid-area: viewer;
         padding: 1.25rem 1.4rem;
       }
       .viewer header {
@@ -258,15 +266,15 @@
       @media (max-width: 1180px) {
         .main-grid {
           grid-template-columns: 1fr;
+          grid-template-areas:
+            "posts"
+            "categories"
+            "viewer";
         }
         .column {
           padding: 1rem;
         }
-        .posts-column {
-          order: 2;
-        }
         .viewer {
-          order: 3;
           padding: 1.2rem 1.1rem 1.4rem;
         }
       }
@@ -284,7 +292,7 @@
     </header>
     <main>
       <div class="main-grid">
-        <section class="panel column">
+        <section class="panel column categories-column">
           <div class="column-title">Categories</div>
           <div class="category-list" id="categoryList"></div>
         </section>
