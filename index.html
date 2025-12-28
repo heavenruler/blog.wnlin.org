@@ -287,13 +287,18 @@
         </section>
       </div>
     </main>
-    <script src="/vendor/markdown-it.min.js"></script>
     <script>
       const manifestCandidates = [
         '/content/posts/manifest.json',
         '/public/content/posts/manifest.json',
         'content/posts/manifest.json',
         'public/content/posts/manifest.json',
+      ];
+      const markdownItCandidates = [
+        '/vendor/markdown-it.min.js',
+        '/public/vendor/markdown-it.min.js',
+        'vendor/markdown-it.min.js',
+        'public/vendor/markdown-it.min.js',
       ];
       const PAGE_SIZE = 5;
       const categoryListEl = document.getElementById('categoryList');
@@ -304,12 +309,39 @@
       const titleEl = document.getElementById('postTitle');
       const bodyEl = document.getElementById('postBody');
       const metaEl = document.getElementById('postMeta');
-      const md = window.markdownit({ html: true, linkify: true, typographer: true });
 
+      let md = null;
       let manifest = null;
       let activeCategory = 'default';
       let contentBase = '/content/posts';
       let currentPage = 0;
+
+      const loadMarkdownIt = () =>
+        new Promise((resolve, reject) => {
+          const tryNext = (index) => {
+            if (index >= markdownItCandidates.length) {
+              reject(new Error('markdown-it not found'));
+              return;
+            }
+            const script = document.createElement('script');
+            script.src = markdownItCandidates[index];
+            script.async = true;
+            script.onload = () => {
+              if (window.markdownit) {
+                resolve(window.markdownit);
+              } else {
+                tryNext(index + 1);
+              }
+            };
+            script.onerror = () => tryNext(index + 1);
+            document.head.append(script);
+          };
+          if (window.markdownit) {
+            resolve(window.markdownit);
+            return;
+          }
+          tryNext(0);
+        });
 
       const formatDateYMD = (input) => {
         const parsed = new Date(input);
@@ -421,6 +453,10 @@
       };
 
       const loadPost = async (post) => {
+        if (!md) {
+          bodyEl.innerHTML = '<p class="empty">Markdown renderer not loaded.</p>';
+          return;
+        }
         titleEl.textContent = post.title;
         const updated = post.updated || null;
         const posted = formatDateYMD(post.date);
@@ -470,16 +506,29 @@
         throw new Error('Manifest missing');
       };
 
-      loadManifest()
-        .then(() => {
+      const start = async () => {
+        try {
+          md = (await loadMarkdownIt())({ html: true, linkify: true, typographer: true });
+        } catch (err) {
+          console.error(err);
+          listEl.innerHTML = '<p class="empty">Unable to load markdown-it. Make sure /vendor/markdown-it.min.js is deployed.</p>';
+          metaEl.textContent = 'Script load failed';
+          return;
+        }
+
+        try {
+          await loadManifest();
           renderCategories();
           renderPosts();
           selectLatestPost();
-        })
-        .catch(() => {
+        } catch (err) {
+          console.error(err);
           listEl.innerHTML = '<p class="empty">Unable to load posts. Run `make manifest` first.</p>';
           metaEl.textContent = 'No content loaded';
-        });
+        }
+      };
+
+      start();
 
       prevBtn.addEventListener('click', () => {
         if (currentPage === 0) return;
