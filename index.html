@@ -62,14 +62,14 @@
         line-height: 1.7;
       }
       main {
-        width: min(1400px, 96vw);
+        width: min(1200px, 95vw);
         margin: 0 auto 2rem;
         padding: 0 1.25rem 3rem;
       }
       .main-grid {
         display: grid;
-        grid-template-columns: minmax(220px, 24vw) minmax(320px, 30vw) minmax(420px, 1fr);
-        gap: 1.25rem;
+        grid-template-columns: minmax(280px, 36vw) 1fr;
+        gap: 1rem;
         align-items: start;
       }
       .panel {
@@ -80,7 +80,7 @@
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
       }
       .column {
-        padding: 1.1rem;
+        padding: 0.9rem 1rem;
       }
       .column-title {
         margin: 0 0 0.75rem;
@@ -122,12 +122,12 @@
       .post-list {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        gap: 0.65rem;
       }
       .post-card {
         border: 1px solid var(--border);
         border-radius: 12px;
-        padding: 0.85rem 1rem;
+        padding: 0.8rem 0.9rem;
         background: rgba(255, 255, 255, 0.03);
         cursor: pointer;
         transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
@@ -138,8 +138,8 @@
         background: rgba(255, 255, 255, 0.05);
       }
       .post-card h3 {
-        margin: 0 0 0.3rem;
-        font-size: 1.05rem;
+        margin: 0;
+        font-size: 1rem;
         letter-spacing: -0.01em;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -164,11 +164,11 @@
         gap: 0.75rem;
       }
       .pager button {
-        border-radius: 12px;
+        border-radius: 10px;
         border: 1px solid var(--border);
         background: rgba(255, 255, 255, 0.04);
         color: var(--text);
-        padding: 0.5rem 0.85rem;
+        padding: 0.45rem 0.75rem;
         cursor: pointer;
       }
       .pager button:disabled {
@@ -181,7 +181,7 @@
         letter-spacing: 0.01em;
       }
       .viewer {
-        padding: 1.5rem 1.75rem;
+        padding: 1.25rem 1.4rem;
       }
       .viewer header {
         text-align: left;
@@ -191,33 +191,45 @@
         color: var(--muted);
         font-weight: 600;
         letter-spacing: 0.02em;
-        font-size: 0.95rem;
+        font-size: 0.92rem;
         display: flex;
         flex-direction: column;
-        gap: 0.2rem;
+        gap: 0.15rem;
       }
       .viewer h2 {
-        margin: 0.2rem 0 0.35rem;
+        margin: 0.15rem 0 0.25rem;
         font-family: "Source Serif 4", "Space Grotesk", system-ui, sans-serif;
-        font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+        font-size: clamp(1.6rem, 1.6vw + 1rem, 2rem);
         word-break: break-word;
         hyphens: auto;
       }
       .viewer .body {
-        margin-top: 1.25rem;
-        line-height: 1.7;
+        margin-top: 1rem;
+        line-height: 1.65;
       }
       .viewer .body h1,
       .viewer .body h2,
       .viewer .body h3,
       .viewer .body h4 {
         font-family: "Source Serif 4", "Space Grotesk", system-ui, sans-serif;
-        margin: 1.4rem 0 0.65rem;
+        margin: 1.1rem 0 0.5rem;
         letter-spacing: -0.01em;
+      }
+      .viewer .body h1 {
+        font-size: clamp(1.6rem, 1.6vw + 1rem, 2rem);
+      }
+      .viewer .body h2 {
+        font-size: clamp(1.4rem, 1.4vw + 0.9rem, 1.7rem);
+      }
+      .viewer .body h3 {
+        font-size: 1.2rem;
+      }
+      .viewer .body h4 {
+        font-size: 1.05rem;
       }
       .viewer .body p {
         color: var(--text);
-        margin: 0.75rem 0;
+        margin: 0.65rem 0;
       }
       .viewer .body pre {
         background: #0b1220;
@@ -231,12 +243,19 @@
         padding: 0.15rem 0.35rem;
         border-radius: 6px;
       }
+      .viewer .body img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1rem 0;
+        border-radius: 10px;
+      }
       .empty {
         color: var(--muted);
         text-align: center;
         padding: 2rem 0;
       }
-      @media (max-width: 1100px) {
+      @media (max-width: 1180px) {
         .main-grid {
           grid-template-columns: 1fr;
         }
@@ -248,7 +267,7 @@
         }
         .viewer {
           order: 3;
-          padding: 1.25rem 1.25rem 1.5rem;
+          padding: 1.2rem 1.1rem 1.4rem;
         }
       }
     </style>
