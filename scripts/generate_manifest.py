@@ -24,6 +24,20 @@ def parse_front_matter(text: str):
     return data, '\n'.join(lines), False
 
 
+def is_truthy(value: str) -> bool:
+    return str(value).strip().lower() in {'true', '1', 'yes', 'y'}
+
+
+def is_draft(meta: dict, path: Path) -> bool:
+    if path.name.startswith('_'):
+        return True
+    if is_truthy(meta.get('draft', False)):
+        return True
+    if str(meta.get('status', '')).strip().lower() == 'draft':
+        return True
+    return False
+
+
 def extract_title(body: str):
     for line in body.splitlines():
         stripped = line.strip()
@@ -77,6 +91,8 @@ def write_front_matter(path: Path, title: str, date: str, excerpt: str, body: st
 def build_post(path: Path):
     text = path.read_text(encoding='utf-8')
     meta, body, has_meta = parse_front_matter(text)
+    if is_draft(meta, path):
+        return None
     title = meta.get('title') or extract_title(body) or path.stem
     excerpt = extract_excerpt(body)
     date = guess_date(path, meta)
@@ -95,7 +111,9 @@ def build_post(path: Path):
 def gather_posts(directory: Path):
     posts = []
     for path in sorted(directory.glob('*.md')):
-        posts.append(build_post(path))
+        post = build_post(path)
+        if post:
+            posts.append(post)
     return sorted(posts, key=lambda e: e['date'], reverse=True)
 
 
