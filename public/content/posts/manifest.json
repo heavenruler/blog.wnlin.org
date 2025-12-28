@@ -1,7 +1,15 @@
 {
   "default": {
     "label": "Default",
-    "posts": []
+    "posts": [
+      {
+        "file": "default/markdown-test.md",
+        "title": "Markdown Feature Showcase",
+        "date": "2025-12-01",
+        "updated": "2025/12/28 22:01",
+        "excerpt": "# Markdown Feature Showcase\nA quick test post to exercise common Markdown features rendered by markdown-it.\n## Text emphasis\n*Italic* _Italic_ **Bold** __Bold__ **_Bold Italic_** ~~Strikethrough~~ and `inline code`.\n## Blockquote\n> A short quote with **bold** and `inline code`.\n## Lists\n- Bullet one\n- Bullet two\n  - Nested bullet"
+      }
+    ]
   },
   "categories": [
     {
