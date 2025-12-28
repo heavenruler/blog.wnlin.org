@@ -3,117 +3,54 @@
     "label": "Default",
     "posts": [
       {
-        "file": "default/2.md",
-        "title": "Markdown-it in Pages",
-        "date": "2025-12-28",
-        "updated": "2025/12/28 12:43",
-        "excerpt": "# Markdown-it in Pages\nPreview Markdown content with live HTML conversion."
-      },
-      {
         "file": "default/20251228161148.md",
         "title": "123123123123123123123123123123123123123123123123123123123",
         "date": "2025-12-28",
         "updated": "2025/12/28 16:07",
         "excerpt": "# Draft Title\nStart writing your content here."
-      },
-      {
-        "file": "default/3.md",
-        "title": "Deploying with Wrangler",
-        "date": "2025-12-28",
-        "updated": "2025/12/28 12:43",
-        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
-      },
-      {
-        "file": "default/4.md",
-        "title": "Deploying with Wrangler",
-        "date": "2025-12-28",
-        "updated": "2025/12/28 15:40",
-        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
-      },
-      {
-        "file": "default/5.md",
-        "title": "Deploying with Wrangler",
-        "date": "2025-12-28",
-        "updated": "2025/12/28 15:40",
-        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
-      },
-      {
-        "file": "default/6.md",
-        "title": "Deploying with Wrangler",
-        "date": "2025-12-28",
-        "updated": "2025/12/28 15:40",
-        "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
       }
     ]
   },
   "categories": [
     {
-      "slug": "a_cat中文",
-      "directory": "a_cat中文",
-      "label": "a_cat中文",
+      "slug": "1_category",
+      "directory": "1_category",
+      "label": "1_category",
       "posts": [
         {
-          "file": "a_cat中文/1.md",
+          "file": "1_category/20251228162105.md",
           "title": "Category 11 — Beta",
           "date": "2025-12-28",
           "updated": "2025/12/28 12:43",
           "excerpt": "# Category 11 — Beta\nBeta notes for new features."
-        },
-        {
-          "file": "a_cat中文/2.md",
-          "title": "Category 11 — Release",
-          "date": "2025-12-28",
-          "updated": "2025/12/28 12:43",
-          "excerpt": "# Category 11 — Release\nRelease summary for upcoming deploy."
         }
       ]
     },
     {
-      "slug": "category2",
-      "directory": "category2",
-      "label": "category2",
+      "slug": "2_category",
+      "directory": "2_category",
+      "label": "2_category",
       "posts": [
         {
-          "file": "category2/4.md",
+          "file": "2_category/20251228162105.md",
           "title": "Category 2 — Releases",
           "date": "2025-12-28",
           "updated": "2025/12/28 12:43",
           "excerpt": "# Category 2 — Releases\nPublic pages can now list releases with a dedicated feed."
-        },
-        {
-          "file": "category2/5.md",
-          "title": "Category 2 — Tutorials",
-          "date": "2025-12-28",
-          "updated": "2025/12/28 12:43",
-          "excerpt": "# Category 2 — Tutorials\nWrite tutorials to show watchers how to build on Cloudflare."
         }
       ]
     },
     {
-      "slug": "category5",
-      "directory": "category5",
-      "label": "category5",
+      "slug": "3_category",
+      "directory": "3_category",
+      "label": "3_category",
       "posts": [
         {
-          "file": "category5/7.md",
+          "file": "3_category/20251228162105.md",
           "title": "Category 5 — Advanced Topics",
           "date": "2025-12-28",
           "updated": "2025/12/28 12:43",
           "excerpt": "# Category 5 — Advanced Topics\nDive into Workers, KV, and Markdown pipelines."
-        },
-        {
-          "file": "category5/8.md",
-          "title": "Category 5 — Tooling",
-          "date": "2025-12-28",
-          "updated": "2025/12/28 12:43",
-          "excerpt": "# Category 5 — Tooling\nUse CLI scripts to keep the manifest in sync."
-        },
-        {
-          "file": "category5/9.md",
-          "title": "Category 5 — Observability",
-          "date": "2025-12-28",
-          "updated": "2025/12/28 12:43",
-          "excerpt": "# Category 5 — Observability\nTrack Worker events with durability and logging."
         }
       ]
     }

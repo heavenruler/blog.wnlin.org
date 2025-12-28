@@ -38,6 +38,7 @@ test:
 	"$$WRANGLER" pages dev public --port 8787
 
 push:
+	@$(MAKE) manifest
 	@git add .
 	@git commit -m "$(MESSAGE)"
 	@git push
