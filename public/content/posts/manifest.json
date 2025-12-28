@@ -4,20 +4,23 @@
     "posts": [
       {
         "file": "default/1.md",
-        "title": "Welcome to the blog",
+        "title": "Markdown Feature Showcase",
         "date": "2025-12-28",
-        "excerpt": "# Welcome to the blog\nThis default stream demonstrates how posts will render.\nTom's note: the manifest generator will self-populate metadata."
+        "updated": "2025/12/28 15:03",
+        "excerpt": "# Markdown Feature Showcase\nA quick test post to exercise common Markdown features rendered by markdown-it.\n## Text emphasis\n*Italic* _Italic_ **Bold** __Bold__ **_Bold Italic_** ~~Strikethrough~~ and `inline code`.\n## Blockquote\n> A short quote with **bold** and `inline code`.\n## Lists\n- Bullet one\n- Bullet two\n  - Nested bullet"
       },
       {
         "file": "default/2.md",
         "title": "Markdown-it in Pages",
         "date": "2025-12-28",
+        "updated": "2025/12/28 12:43",
         "excerpt": "# Markdown-it in Pages\nPreview Markdown content with live HTML conversion."
       },
       {
         "file": "default/3.md",
         "title": "Deploying with Wrangler",
         "date": "2025-12-28",
+        "updated": "2025/12/28 12:43",
         "excerpt": "# Deploying with Wrangler\nMentioned steps for `wrangler pages deploy` and verifying the build output."
       }
     ]
@@ -32,12 +35,14 @@
           "file": "category11/1.md",
           "title": "Category 11 — Beta",
           "date": "2025-12-28",
+          "updated": "2025/12/28 12:43",
           "excerpt": "# Category 11 — Beta\nBeta notes for new features."
         },
         {
           "file": "category11/2.md",
           "title": "Category 11 — Release",
           "date": "2025-12-28",
+          "updated": "2025/12/28 12:43",
           "excerpt": "# Category 11 — Release\nRelease summary for upcoming deploy."
         }
       ]
@@ -51,12 +56,14 @@
           "file": "category2/4.md",
           "title": "Category 2 — Releases",
           "date": "2025-12-28",
+          "updated": "2025/12/28 12:43",
           "excerpt": "# Category 2 — Releases\nPublic pages can now list releases with a dedicated feed."
         },
         {
           "file": "category2/5.md",
           "title": "Category 2 — Tutorials",
           "date": "2025-12-28",
+          "updated": "2025/12/28 12:43",
           "excerpt": "# Category 2 — Tutorials\nWrite tutorials to show watchers how to build on Cloudflare."
         }
       ]
@@ -70,18 +77,21 @@
           "file": "category5/7.md",
           "title": "Category 5 — Advanced Topics",
           "date": "2025-12-28",
+          "updated": "2025/12/28 12:43",
           "excerpt": "# Category 5 — Advanced Topics\nDive into Workers, KV, and Markdown pipelines."
         },
         {
           "file": "category5/8.md",
           "title": "Category 5 — Tooling",
           "date": "2025-12-28",
+          "updated": "2025/12/28 12:43",
           "excerpt": "# Category 5 — Tooling\nUse CLI scripts to keep the manifest in sync."
         },
         {
           "file": "category5/9.md",
           "title": "Category 5 — Observability",
           "date": "2025-12-28",
+          "updated": "2025/12/28 12:43",
           "excerpt": "# Category 5 — Observability\nTrack Worker events with durability and logging."
         }
       ]

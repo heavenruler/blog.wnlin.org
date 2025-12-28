@@ -80,12 +80,14 @@ def build_post(path: Path):
     title = meta.get('title') or extract_title(body) or path.stem
     excerpt = extract_excerpt(body)
     date = guess_date(path, meta)
+    updated = datetime.fromtimestamp(path.stat().st_mtime).strftime('%Y/%m/%d %H:%M')
     if not has_meta:
         write_front_matter(path, title, date, excerpt, text)
     return {
         'file': path.relative_to(ROOT).as_posix(),
         'title': title,
         'date': date,
+        'updated': updated,
         'excerpt': excerpt,
     }
 

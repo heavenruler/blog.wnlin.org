@@ -394,7 +394,9 @@
 
       const loadPost = async (post) => {
         titleEl.textContent = post.title;
-        metaEl.textContent = normalizeDate(post.date);
+        const updated = post.updated || null;
+        const posted = normalizeDate(post.date);
+        metaEl.textContent = updated ? `Posted: ${posted} · Last updated: ${updated}` : `Posted: ${posted}`;
         bodyEl.innerHTML = '<p class="empty">Loading...</p>';
         try {
           const res = await fetch(`${contentBase}/${post.file}`);
