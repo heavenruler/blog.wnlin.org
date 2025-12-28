@@ -62,12 +62,15 @@
         line-height: 1.7;
       }
       main {
-        max-width: 1200px;
+        max-width: 1280px;
         margin: 0 auto 2rem;
-        padding: 0 1.5rem 3rem;
+        padding: 0 1.25rem 3rem;
+      }
+      .main-grid {
         display: grid;
-        gap: 1.5rem;
-        grid-template-columns: minmax(320px, 360px) 1fr;
+        grid-template-columns: 240px 360px 1fr;
+        gap: 1rem;
+        align-items: start;
       }
       .panel {
         background: var(--panel);
@@ -76,47 +79,58 @@
         backdrop-filter: blur(12px);
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
       }
-      .sidebar {
-        padding: 1.25rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+      .column {
+        padding: 1.1rem;
       }
-      .tabs {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
+      .column-title {
+        margin: 0 0 0.75rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
-      .tabs button {
+      .category-list {
+        display: grid;
+        gap: 0.5rem;
+      }
+      .category-list button {
+        width: 100%;
+        text-align: left;
+        padding: 0.65rem 0.75rem;
+        border-radius: 12px;
         border: 1px solid var(--border);
         background: rgba(255, 255, 255, 0.03);
         color: var(--text);
-        border-radius: 12px;
-        padding: 0.5rem 1rem;
+        font-weight: 700;
         cursor: pointer;
-        font-weight: 600;
-        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+        transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
       }
-      .tabs button.active {
+      .category-list button.active {
         background: var(--accent);
         color: #0f172a;
         border-color: transparent;
       }
-      .tabs button:hover {
+      .category-list button:hover {
         transform: translateY(-1px);
         border-color: rgba(255, 255, 255, 0.24);
       }
-      .post-list {
-        display: grid;
+      .posts-column {
+        display: flex;
+        flex-direction: column;
         gap: 0.85rem;
+      }
+      .post-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
       }
       .post-card {
         border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 0.9rem 1rem;
+        border-radius: 12px;
+        padding: 0.85rem 1rem;
         background: rgba(255, 255, 255, 0.03);
         cursor: pointer;
-        transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+        transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
       }
       .post-card:hover {
         border-color: rgba(255, 255, 255, 0.18);
@@ -124,22 +138,42 @@
         background: rgba(255, 255, 255, 0.05);
       }
       .post-card h3 {
-        margin: 0 0 0.35rem;
+        margin: 0 0 0.3rem;
         font-size: 1.05rem;
         letter-spacing: -0.01em;
       }
-      .meta {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
+      .post-card .meta {
+        margin: 0 0 0.35rem;
         color: var(--muted);
         font-size: 0.9rem;
-        margin-bottom: 0.35rem;
       }
       .excerpt {
         color: var(--muted);
         font-size: 0.95rem;
         line-height: 1.55;
+      }
+      .pager {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+      }
+      .pager button {
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        padding: 0.5rem 0.85rem;
+        cursor: pointer;
+      }
+      .pager button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+      .pager .page-info {
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.01em;
       }
       .viewer {
         padding: 1.5rem 1.75rem;
@@ -186,11 +220,18 @@
         text-align: center;
         padding: 2rem 0;
       }
-      @media (max-width: 960px) {
-        main {
+      @media (max-width: 1100px) {
+        .main-grid {
           grid-template-columns: 1fr;
         }
+        .column {
+          padding: 1rem;
+        }
+        .posts-column {
+          order: 2;
+        }
         .viewer {
+          order: 3;
           padding: 1.25rem 1.25rem 1.5rem;
         }
       }
@@ -207,23 +248,38 @@
       </p>
     </header>
     <main>
-      <section class="sidebar panel">
-        <div class="tabs" id="tabs"></div>
-        <div class="post-list" id="postList"></div>
-      </section>
-      <section class="viewer panel">
-        <header>
-          <div class="meta" id="postMeta">Pick a post to start reading.</div>
-          <h2 id="postTitle"></h2>
-        </header>
-        <div class="body" id="postBody"></div>
-      </section>
+      <div class="main-grid">
+        <section class="panel column">
+          <div class="column-title">Categories</div>
+          <div class="category-list" id="categoryList"></div>
+        </section>
+        <section class="panel column posts-column">
+          <div class="column-title">Posts</div>
+          <div class="post-list" id="postList"></div>
+          <div class="pager">
+            <button id="prevPage" type="button">‹ Prev</button>
+            <div class="page-info" id="pageInfo">Page 1</div>
+            <button id="nextPage" type="button">Next ›</button>
+          </div>
+        </section>
+        <section class="viewer panel">
+          <header>
+            <div class="meta" id="postMeta">Pick a post to start reading.</div>
+            <h2 id="postTitle"></h2>
+          </header>
+          <div class="body" id="postBody"></div>
+        </section>
+      </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.2/dist/markdown-it.min.js"></script>
     <script>
       const manifestCandidates = ['content/posts/manifest.json', 'public/content/posts/manifest.json'];
-      const tabsEl = document.getElementById('tabs');
+      const PAGE_SIZE = 10;
+      const categoryListEl = document.getElementById('categoryList');
       const listEl = document.getElementById('postList');
+      const prevBtn = document.getElementById('prevPage');
+      const nextBtn = document.getElementById('nextPage');
+      const pageInfoEl = document.getElementById('pageInfo');
       const titleEl = document.getElementById('postTitle');
       const bodyEl = document.getElementById('postBody');
       const metaEl = document.getElementById('postMeta');
@@ -231,8 +287,8 @@
 
       let manifest = null;
       let activeCategory = 'default';
-      let activePost = null;
       let contentBase = 'content/posts';
+      let currentPage = 0;
 
       const normalizeDate = (input) => {
         const parsed = new Date(input);
@@ -251,48 +307,63 @@
         return raw;
       };
 
-      const selectFirstPost = () => {
-        const collection = activeCategory === 'default'
-          ? manifest?.default?.posts ?? []
-          : (manifest?.categories || []).find((cat) => cat.slug === activeCategory)?.posts ?? [];
-        if (collection.length) {
-          loadPost(collection[0]);
-        } else {
-          titleEl.textContent = '';
-          bodyEl.innerHTML = '<p class="empty">No posts found in this category.</p>';
+      const getCategories = () => [
+        { slug: 'default', label: manifest.default?.label || 'Default' },
+        ...(manifest.categories || []),
+      ];
+
+      const getPostsForCategory = (slug) => {
+        if (slug === 'default') {
+          return manifest?.default?.posts || [];
         }
+        return (manifest?.categories || []).find((cat) => cat.slug === slug)?.posts || [];
       };
 
-      const renderTabs = () => {
-        if (!manifest) return;
-        const categories = [
-          { slug: 'default', label: manifest.default?.label || 'default' },
-          ...(manifest.categories || []),
-        ];
-        tabsEl.innerHTML = '';
-        categories.forEach((category) => {
+      const renderCategories = () => {
+        categoryListEl.innerHTML = '';
+        getCategories().forEach((category) => {
           const btn = document.createElement('button');
           btn.textContent = category.label;
           btn.className = activeCategory === category.slug ? 'active' : '';
           btn.addEventListener('click', () => {
             activeCategory = category.slug;
-            renderList();
-            selectFirstPost();
+            currentPage = 0;
+            renderCategories();
+            renderPosts();
+            selectLatestPost();
           });
-          tabsEl.append(btn);
+          categoryListEl.append(btn);
         });
       };
 
-      const renderList = () => {
-        listEl.innerHTML = '';
-        const collection = activeCategory === 'default'
-          ? manifest?.default?.posts || []
-          : (manifest?.categories || []).find((cat) => cat.slug === activeCategory)?.posts || [];
-        if (!collection.length) {
-          listEl.innerHTML = '<p class="empty">No posts yet. Run `make manifest`.</p>';
+      const updatePager = (total, totalPages) => {
+        if (!total) {
+          pageInfoEl.textContent = 'No posts';
+          prevBtn.disabled = true;
+          nextBtn.disabled = true;
           return;
         }
-        collection.forEach((post) => {
+        pageInfoEl.textContent = `Page ${currentPage + 1} / ${totalPages} · ${total} posts`;
+        prevBtn.disabled = currentPage === 0;
+        nextBtn.disabled = currentPage >= totalPages - 1;
+      };
+
+      const renderPosts = () => {
+        const posts = getPostsForCategory(activeCategory);
+        const totalPages = Math.max(1, Math.ceil(posts.length / PAGE_SIZE));
+        currentPage = Math.min(currentPage, totalPages - 1);
+        listEl.innerHTML = '';
+
+        if (!posts.length) {
+          listEl.innerHTML = '<p class="empty">No posts yet. Run `make manifest`.</p>';
+          updatePager(0, 0);
+          return;
+        }
+
+        const start = currentPage * PAGE_SIZE;
+        const visible = posts.slice(start, start + PAGE_SIZE);
+
+        visible.forEach((post) => {
           const card = document.createElement('article');
           card.className = 'post-card';
           card.innerHTML = `
@@ -303,10 +374,11 @@
           card.addEventListener('click', () => loadPost(post));
           listEl.append(card);
         });
+
+        updatePager(posts.length, totalPages);
       };
 
       const loadPost = async (post) => {
-        activePost = post;
         titleEl.textContent = post.title;
         metaEl.textContent = normalizeDate(post.date);
         bodyEl.innerHTML = '<p class="empty">Loading...</p>';
@@ -318,6 +390,17 @@
           bodyEl.innerHTML = html;
         } catch (err) {
           bodyEl.innerHTML = '<p class="empty">Unable to load this post.</p>';
+        }
+      };
+
+      const selectLatestPost = () => {
+        const posts = getPostsForCategory(activeCategory);
+        if (posts.length) {
+          loadPost(posts[0]);
+        } else {
+          titleEl.textContent = '';
+          bodyEl.innerHTML = '<p class="empty">No posts found in this category.</p>';
+          metaEl.textContent = '';
         }
       };
 
@@ -339,14 +422,28 @@
 
       loadManifest()
         .then(() => {
-          renderTabs();
-          renderList();
-          selectFirstPost();
+          renderCategories();
+          renderPosts();
+          selectLatestPost();
         })
         .catch(() => {
           listEl.innerHTML = '<p class="empty">Unable to load posts. Run `make manifest` first.</p>';
           metaEl.textContent = 'No content loaded';
         });
+
+      prevBtn.addEventListener('click', () => {
+        if (currentPage === 0) return;
+        currentPage -= 1;
+        renderPosts();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        const posts = getPostsForCategory(activeCategory);
+        const totalPages = Math.ceil(posts.length / PAGE_SIZE);
+        if (currentPage >= totalPages - 1) return;
+        currentPage += 1;
+        renderPosts();
+      });
     </script>
   </body>
 </html>
