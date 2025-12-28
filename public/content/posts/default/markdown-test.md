@@ -5,7 +5,7 @@ excerpt: |
   Quick sweep across Markdown features supported by markdown-it.
   Includes headings, emphasis, links, images, lists, tables, code, blockquotes,
   and a few GitHub-flavored extras to see what does not render (footnotes, task boxes, definition lists, sub/superscripts).
-draft: false
+draft: true
 ---
 # Markdown Feature Showcase
 
