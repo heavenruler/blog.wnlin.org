@@ -62,14 +62,14 @@
         line-height: 1.7;
       }
       main {
-        max-width: 1280px;
+        width: min(1400px, 96vw);
         margin: 0 auto 2rem;
         padding: 0 1.25rem 3rem;
       }
       .main-grid {
         display: grid;
-        grid-template-columns: 240px 360px 1fr;
-        gap: 1rem;
+        grid-template-columns: minmax(220px, 24vw) minmax(320px, 30vw) minmax(420px, 1fr);
+        gap: 1.25rem;
         align-items: start;
       }
       .panel {
