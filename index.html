@@ -307,6 +307,24 @@
         return raw;
       };
 
+      const removeLeadingTitle = (body, title) => {
+        const lines = body.split('\n');
+        const firstIndex = lines.findIndex((line) => line.trim() !== '');
+        if (firstIndex === -1) return body;
+        const first = lines[firstIndex].trim();
+        if (first.startsWith('#')) {
+          const text = first.replace(/^#+\s*/, '').trim().toLowerCase();
+          if (text === (title || '').trim().toLowerCase()) {
+            lines.splice(firstIndex, 1);
+            if (lines[firstIndex] && lines[firstIndex].trim() === '') {
+              lines.splice(firstIndex, 1);
+            }
+            return lines.join('\n');
+          }
+        }
+        return body;
+      };
+
       const getCategories = () => [
         { slug: 'default', label: manifest.default?.label || 'Default' },
         ...(manifest.categories || []),
@@ -382,7 +400,9 @@
           const res = await fetch(`${contentBase}/${post.file}`);
           if (!res.ok) throw new Error('Not found');
           const raw = await res.text();
-          const html = md.render(stripFrontMatter(raw));
+          const cleaned = stripFrontMatter(raw);
+          const withoutTitle = removeLeadingTitle(cleaned, post.title);
+          const html = md.render(withoutTitle);
           bodyEl.innerHTML = html;
         } catch (err) {
           bodyEl.innerHTML = '<p class="empty">Unable to load this post.</p>';
