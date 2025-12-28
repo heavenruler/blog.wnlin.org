@@ -11,6 +11,18 @@ help:
 	@echo "  newpost  Create public/content/posts/default/draft.md with a draft template."
 
 manifest:
+	@for f in $$(find public/content/posts -type f -name draft.md); do \
+		dir=$$(dirname "$$f"); \
+		base=$$(date +%Y%m%d%H%M%S); \
+		target="$$dir/$${base}.md"; \
+		n=1; \
+		while [ -e "$$target" ]; do \
+			target="$$dir/$${base}_$${n}.md"; \
+			n=$$((n+1)); \
+		done; \
+		mv "$$f" "$$target"; \
+		echo "Renamed $$f -> $$target"; \
+	done
 	@python3 scripts/generate_manifest.py
 
 test:
