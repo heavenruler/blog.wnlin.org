@@ -366,11 +366,7 @@
         visible.forEach((post) => {
           const card = document.createElement('article');
           card.className = 'post-card';
-          card.innerHTML = `
-            <div class="meta">${normalizeDate(post.date)}</div>
-            <h3>${post.title}</h3>
-            <div class="excerpt">${md.render(post.excerpt)}</div>
-          `;
+          card.innerHTML = `<h3>${post.title}</h3>`;
           card.addEventListener('click', () => loadPost(post));
           listEl.append(card);
         });
