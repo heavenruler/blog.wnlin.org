@@ -1,15 +1,7 @@
 {
   "default": {
     "label": "Default",
-    "posts": [
-      {
-        "file": "default/20251228161148.md",
-        "title": "Draft Title",
-        "date": "2025-12-28",
-        "updated": "2025/12/28 16:23",
-        "excerpt": "# Draft Title\nStart writing your content here."
-      }
-    ]
+    "posts": []
   },
   "categories": [
     {

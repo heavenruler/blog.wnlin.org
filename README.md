@@ -12,6 +12,14 @@ make manifest
 
 The generator infers `title`, `date`, and an excerpt (the first ten non-empty lines) from each `.md` file and writes `manifest.json`, which the frontend fetches at runtime.
 
+To publish a sitemap for Google Search Console, generate `public/sitemap.xml`:
+
+```bash
+make sitemap
+```
+
+Set `SITE_BASE=https://your-domain` when running the command if you need a base URL other than the default `https://blog.wnlin.org`.
+
 ## Local preview
 
 ```bash

@@ -6,6 +6,7 @@ help:
 	@echo "Available targets:"
 	@echo "  help     Show this help."
 	@echo "  manifest Regenerate public/content/posts/manifest.json from Markdown files."
+	@echo "  sitemap  Generate public/sitemap.xml for Google Search Console."
 	@echo "  test     Run wrangler pages dev to preview the site locally."
 	@echo "  push     git add ., git commit -m \"$$MESSAGE\", and git push."
 	@echo "  newpost  Create public/content/posts/default/draft.md with a draft template."
@@ -42,6 +43,9 @@ push:
 	@git add .
 	@git commit -m "$(MESSAGE)"
 	@git push
+
+sitemap:
+	@python3 scripts/generate_sitemap.py
 
 newpost:
 	@dest="public/content/posts/default/draft.md"; \
