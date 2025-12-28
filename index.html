@@ -182,6 +182,15 @@
         text-align: left;
         padding: 0;
       }
+      .viewer .meta {
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        font-size: 0.95rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
       .viewer h2 {
         margin: 0.2rem 0 0.35rem;
         font-family: "Source Serif 4", "Space Grotesk", system-ui, sans-serif;
@@ -290,6 +299,13 @@
       let contentBase = 'content/posts';
       let currentPage = 0;
 
+      const formatDateYMD = (input) => {
+        const parsed = new Date(input);
+        if (Number.isNaN(parsed.getTime())) return input;
+        const pad = (n) => `${n}`.padStart(2, '0');
+        return `${parsed.getFullYear()}/${pad(parsed.getMonth() + 1)}/${pad(parsed.getDate())}`;
+      };
+
       const normalizeDate = (input) => {
         const parsed = new Date(input);
         if (Number.isNaN(parsed.getTime())) return input;
@@ -395,8 +411,12 @@
       const loadPost = async (post) => {
         titleEl.textContent = post.title;
         const updated = post.updated || null;
-        const posted = normalizeDate(post.date);
-        metaEl.textContent = updated ? `Posted: ${posted} · Last updated: ${updated}` : `Posted: ${posted}`;
+        const posted = formatDateYMD(post.date);
+        if (updated) {
+          metaEl.innerHTML = `<span>Posted: ${posted}</span><span>Updated: ${updated}</span>`;
+        } else {
+          metaEl.textContent = `Posted: ${posted}`;
+        }
         bodyEl.innerHTML = '<p class="empty">Loading...</p>';
         try {
           const res = await fetch(`${contentBase}/${post.file}`);
