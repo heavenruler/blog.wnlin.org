@@ -1,4 +1,4 @@
-.PHONY: help manifest test push
+.PHONY: help manifest test push newpost
 
 MESSAGE ?= chore: update
 
@@ -8,6 +8,7 @@ help:
 	@echo "  manifest Regenerate public/content/posts/manifest.json from Markdown files."
 	@echo "  test     Run wrangler pages dev to preview the site locally."
 	@echo "  push     git add ., git commit -m \"$$MESSAGE\", and git push."
+	@echo "  newpost  Create public/content/posts/default/draft.md with a draft template."
 
 manifest:
 	@python3 scripts/generate_manifest.py
@@ -28,3 +29,23 @@ push:
 	@git add .
 	@git commit -m "$(MESSAGE)"
 	@git push
+
+newpost:
+	@dest="public/content/posts/default/draft.md"; \
+	today=$$(date +%Y-%m-%d); \
+	printf '%s\n' \
+	'---' \
+	'title: Draft Post' \
+	'date: REPLACE_WITH_DATE' \
+	'excerpt: |' \
+	'  Short summary goes here.' \
+	'draft: true' \
+	'---' \
+	'' \
+	'# Draft Title' \
+	'' \
+	'Start writing your content here.' \
+	> "$$dest"; \
+	sed -i '' "s/REPLACE_WITH_DATE/$$today/" "$$dest" 2>/dev/null || \
+	  sed -i "s/REPLACE_WITH_DATE/$$today/" "$$dest" 2>/dev/null || true; \
+	echo "Created $$dest (marked draft: true)."

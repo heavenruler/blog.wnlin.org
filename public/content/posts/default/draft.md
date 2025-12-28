@@ -1,0 +1,11 @@
+---
+title: 123123123123123123123123123123123123123123123123123123123
+date: 2025-12-28
+excerpt: |
+  Short summary goes here.
+draft: false
+---
+
+# Draft Title
+
+Start writing your content here.
