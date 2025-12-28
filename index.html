@@ -69,9 +69,7 @@
       .main-grid {
         display: grid;
         grid-template-columns: minmax(0, 70%) minmax(320px, 30%);
-        grid-template-areas:
-          "viewer posts"
-          "viewer categories";
+        grid-template-areas: "viewer sidebar";
         gap: 1.1rem;
         align-items: start;
       }
@@ -118,13 +116,17 @@
         border-color: rgba(255, 255, 255, 0.24);
       }
       .posts-column {
-        grid-area: posts;
         display: flex;
         flex-direction: column;
         gap: 0.85rem;
       }
       .categories-column {
-        grid-area: categories;
+        margin-top: 0.6rem;
+      }
+      .sidebar {
+        grid-area: sidebar;
+        display: flex;
+        flex-direction: column;
       }
       .post-list {
         display: flex;
@@ -268,8 +270,7 @@
           grid-template-columns: 1fr;
           grid-template-areas:
             "viewer"
-            "posts"
-            "categories";
+            "sidebar";
         }
         .column {
           padding: 1rem;
@@ -292,19 +293,6 @@
     </header>
     <main>
       <div class="main-grid">
-        <section class="panel column categories-column">
-          <div class="column-title">Categories</div>
-          <div class="category-list" id="categoryList"></div>
-        </section>
-        <section class="panel column posts-column">
-          <div class="column-title">Posts</div>
-          <div class="post-list" id="postList"></div>
-          <div class="pager">
-            <button id="prevPage" type="button">‹ Prev</button>
-            <div class="page-info" id="pageInfo">Page 1</div>
-            <button id="nextPage" type="button">Next ›</button>
-          </div>
-        </section>
         <section class="viewer panel">
           <header>
             <div class="meta" id="postMeta">Pick a post to start reading.</div>
@@ -312,6 +300,21 @@
           </header>
           <div class="body" id="postBody"></div>
         </section>
+        <div class="sidebar">
+          <section class="panel column posts-column">
+            <div class="column-title">Posts</div>
+            <div class="post-list" id="postList"></div>
+            <div class="pager">
+              <button id="prevPage" type="button">‹ Prev</button>
+              <div class="page-info" id="pageInfo">Page 1</div>
+              <button id="nextPage" type="button">Next ›</button>
+            </div>
+          </section>
+          <section class="panel column categories-column">
+            <div class="column-title">Categories</div>
+            <div class="category-list" id="categoryList"></div>
+          </section>
+        </div>
       </div>
     </main>
     <script>
