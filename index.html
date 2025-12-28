@@ -3,46 +3,350 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Cloudflare Pages Hello World</title>
+    <title>Markdown-it Blog</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      body {
-        font-family: system-ui, sans-serif;
-        background: #0f172a;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        margin: 0;
-        text-align: center;
+      :root {
+        --bg: #0f172a;
+        --panel: rgba(255, 255, 255, 0.02);
+        --muted: #94a3b8;
+        --accent: #e2b714;
+        --text: #e2e8f0;
+        --link: #a5b4fc;
+        --border: rgba(255, 255, 255, 0.08);
       }
-      main {
-        max-width: 600px;
-        padding: 1.5rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 16px;
-        background: rgba(15, 23, 42, 0.85);
-        box-shadow: 0 25px 45px rgba(15, 23, 42, 0.5);
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: radial-gradient(circle at 20% 20%, #1f2937 0, transparent 35%), radial-gradient(circle at 80% 0%, #0ea5e9 0, transparent 30%), radial-gradient(circle at 50% 100%, #e2b714 0, transparent 35%), var(--bg);
+        color: var(--text);
+        font-family: "Space Grotesk", system-ui, sans-serif;
       }
       a {
-        color: #38bdf8;
-        text-decoration: none;
-        font-weight: 700;
+        color: var(--link);
+      }
+      header {
+        padding: 2.75rem 1.5rem 1.75rem;
+        text-align: center;
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      h1 {
+        margin: 1rem 0 0.25rem;
+        font-family: "Source Serif 4", "Space Grotesk", system-ui, sans-serif;
+        font-size: clamp(2.2rem, 2vw + 1.5rem, 3rem);
+        letter-spacing: -0.02em;
+      }
+      .lede {
+        margin: 0 auto;
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+      main {
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+        padding: 0 1.5rem 3rem;
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: minmax(320px, 360px) 1fr;
+      }
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+      }
+      .sidebar {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .tabs button {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        border-radius: 12px;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+      }
+      .tabs button.active {
+        background: var(--accent);
+        color: #0f172a;
+        border-color: transparent;
+      }
+      .tabs button:hover {
+        transform: translateY(-1px);
+        border-color: rgba(255, 255, 255, 0.24);
+      }
+      .post-list {
+        display: grid;
+        gap: 0.85rem;
+      }
+      .post-card {
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 0.9rem 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        cursor: pointer;
+        transition: border-color 180ms ease, transform 180ms ease, background 180ms ease;
+      }
+      .post-card:hover {
+        border-color: rgba(255, 255, 255, 0.18);
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.05);
+      }
+      .post-card h3 {
+        margin: 0 0 0.35rem;
+        font-size: 1.05rem;
+        letter-spacing: -0.01em;
+      }
+      .meta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--muted);
+        font-size: 0.9rem;
+        margin-bottom: 0.35rem;
+      }
+      .excerpt {
+        color: var(--muted);
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+      .viewer {
+        padding: 1.5rem 1.75rem;
+      }
+      .viewer header {
+        text-align: left;
+        padding: 0;
+      }
+      .viewer h2 {
+        margin: 0.2rem 0 0.35rem;
+        font-family: "Source Serif 4", "Space Grotesk", system-ui, sans-serif;
+        font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+      }
+      .viewer .body {
+        margin-top: 1.25rem;
+        line-height: 1.7;
+      }
+      .viewer .body h1,
+      .viewer .body h2,
+      .viewer .body h3,
+      .viewer .body h4 {
+        font-family: "Source Serif 4", "Space Grotesk", system-ui, sans-serif;
+        margin: 1.4rem 0 0.65rem;
+        letter-spacing: -0.01em;
+      }
+      .viewer .body p {
+        color: var(--text);
+        margin: 0.75rem 0;
+      }
+      .viewer .body pre {
+        background: #0b1220;
+        border-radius: 12px;
+        padding: 1rem;
+        overflow: auto;
+      }
+      .viewer .body code {
+        font-family: "Berkeley Mono", "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        background: rgba(255, 255, 255, 0.07);
+        padding: 0.15rem 0.35rem;
+        border-radius: 6px;
+      }
+      .empty {
+        color: var(--muted);
+        text-align: center;
+        padding: 2rem 0;
+      }
+      @media (max-width: 960px) {
+        main {
+          grid-template-columns: 1fr;
+        }
+        .viewer {
+          padding: 1.25rem 1.25rem 1.5rem;
+        }
       }
     </style>
   </head>
   <body>
+    <header>
+      <div class="eyebrow">markdown-it • frontend</div>
+      <h1>Blog-ready Markdown reader</h1>
+      <p class="lede">
+        Browse posts generated from your Markdown files. Categories map to folder names,
+        and content is rendered via markdown-it—no editor block, just a clean reading
+        experience.
+      </p>
+    </header>
     <main>
-      <h1>Hello World</h1>
-      <p>
-        This minimal page proves that Cloudflare Pages + your Worker route are
-        wired correctly.
-      </p>
-      <p>
-        <a href="?hello=1">Append <code>?hello=1</code> to show an alternate
-        test view.</a>
-      </p>
+      <section class="sidebar panel">
+        <div class="tabs" id="tabs"></div>
+        <div class="post-list" id="postList"></div>
+      </section>
+      <section class="viewer panel">
+        <header>
+          <div class="meta" id="postMeta">Pick a post to start reading.</div>
+          <h2 id="postTitle"></h2>
+        </header>
+        <div class="body" id="postBody"></div>
+      </section>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/markdown-it@13.0.2/dist/markdown-it.min.js"></script>
+    <script>
+      const manifestCandidates = ['content/posts/manifest.json', 'public/content/posts/manifest.json'];
+      const tabsEl = document.getElementById('tabs');
+      const listEl = document.getElementById('postList');
+      const titleEl = document.getElementById('postTitle');
+      const bodyEl = document.getElementById('postBody');
+      const metaEl = document.getElementById('postMeta');
+      const md = window.markdownit({ html: true, linkify: true, typographer: true });
+
+      let manifest = null;
+      let activeCategory = 'default';
+      let activePost = null;
+      let contentBase = 'content/posts';
+
+      const normalizeDate = (input) => {
+        const parsed = new Date(input);
+        if (Number.isNaN(parsed.getTime())) return input;
+        return parsed.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+      };
+
+      const stripFrontMatter = (raw) => {
+        if (!raw.startsWith('---')) return raw;
+        const lines = raw.split('\n');
+        for (let i = 1; i < lines.length; i++) {
+          if (lines[i].trim() === '---') {
+            return lines.slice(i + 1).join('\n');
+          }
+        }
+        return raw;
+      };
+
+      const selectFirstPost = () => {
+        const collection = activeCategory === 'default'
+          ? manifest?.default?.posts ?? []
+          : (manifest?.categories || []).find((cat) => cat.slug === activeCategory)?.posts ?? [];
+        if (collection.length) {
+          loadPost(collection[0]);
+        } else {
+          titleEl.textContent = '';
+          bodyEl.innerHTML = '<p class="empty">No posts found in this category.</p>';
+        }
+      };
+
+      const renderTabs = () => {
+        if (!manifest) return;
+        const categories = [
+          { slug: 'default', label: manifest.default?.label || 'default' },
+          ...(manifest.categories || []),
+        ];
+        tabsEl.innerHTML = '';
+        categories.forEach((category) => {
+          const btn = document.createElement('button');
+          btn.textContent = category.label;
+          btn.className = activeCategory === category.slug ? 'active' : '';
+          btn.addEventListener('click', () => {
+            activeCategory = category.slug;
+            renderList();
+            selectFirstPost();
+          });
+          tabsEl.append(btn);
+        });
+      };
+
+      const renderList = () => {
+        listEl.innerHTML = '';
+        const collection = activeCategory === 'default'
+          ? manifest?.default?.posts || []
+          : (manifest?.categories || []).find((cat) => cat.slug === activeCategory)?.posts || [];
+        if (!collection.length) {
+          listEl.innerHTML = '<p class="empty">No posts yet. Run `make manifest`.</p>';
+          return;
+        }
+        collection.forEach((post) => {
+          const card = document.createElement('article');
+          card.className = 'post-card';
+          card.innerHTML = `
+            <div class="meta">${normalizeDate(post.date)}</div>
+            <h3>${post.title}</h3>
+            <div class="excerpt">${md.render(post.excerpt)}</div>
+          `;
+          card.addEventListener('click', () => loadPost(post));
+          listEl.append(card);
+        });
+      };
+
+      const loadPost = async (post) => {
+        activePost = post;
+        titleEl.textContent = post.title;
+        metaEl.textContent = normalizeDate(post.date);
+        bodyEl.innerHTML = '<p class="empty">Loading...</p>';
+        try {
+          const res = await fetch(`${contentBase}/${post.file}`);
+          if (!res.ok) throw new Error('Not found');
+          const raw = await res.text();
+          const html = md.render(stripFrontMatter(raw));
+          bodyEl.innerHTML = html;
+        } catch (err) {
+          bodyEl.innerHTML = '<p class="empty">Unable to load this post.</p>';
+        }
+      };
+
+      const loadManifest = async () => {
+        for (const candidate of manifestCandidates) {
+          try {
+            const res = await fetch(candidate);
+            if (!res.ok) continue;
+            const data = await res.json();
+            manifest = data;
+            contentBase = candidate.replace('/manifest.json', '');
+            return;
+          } catch (err) {
+            continue;
+          }
+        }
+        throw new Error('Manifest missing');
+      };
+
+      loadManifest()
+        .then(() => {
+          renderTabs();
+          renderList();
+          selectFirstPost();
+        })
+        .catch(() => {
+          listEl.innerHTML = '<p class="empty">Unable to load posts. Run `make manifest` first.</p>';
+          metaEl.textContent = 'No content loaded';
+        });
+    </script>
   </body>
 </html>
