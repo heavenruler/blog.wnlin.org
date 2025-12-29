@@ -13,12 +13,12 @@
   },
   "categories": [
     {
-      "slug": "1_category",
-      "directory": "1_category",
-      "label": "1_category",
+      "slug": "1_生活雜記",
+      "directory": "1_生活雜記",
+      "label": "1_生活雜記",
       "posts": [
         {
-          "file": "1_category/20251228162105.md",
+          "file": "1_生活雜記/20251228162105.md",
           "title": "Category 11 — Beta",
           "date": "2025-12-28",
           "updated": "2025/12/29 19:40",
@@ -27,12 +27,12 @@
       ]
     },
     {
-      "slug": "2_category",
-      "directory": "2_category",
-      "label": "2_category",
+      "slug": "2_解開成就",
+      "directory": "2_解開成就",
+      "label": "2_解開成就",
       "posts": [
         {
-          "file": "2_category/20251228162105.md",
+          "file": "2_解開成就/20251228162105.md",
           "title": "Category 2 — Releases",
           "date": "2025-12-28",
           "updated": "2025/12/29 19:40",
@@ -41,12 +41,12 @@
       ]
     },
     {
-      "slug": "3_category",
-      "directory": "3_category",
-      "label": "3_category",
+      "slug": "3_Tech",
+      "directory": "3_Tech",
+      "label": "3_Tech",
       "posts": [
         {
-          "file": "3_category/20251228162105.md",
+          "file": "3_Tech/20251228162105.md",
           "title": "Category 5 — Advanced Topics",
           "date": "2025-12-28",
           "updated": "2025/12/29 19:40",
