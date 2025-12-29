@@ -20,20 +20,6 @@
   },
   "categories": [
     {
-      "slug": "1_生活雜記",
-      "directory": "1_生活雜記",
-      "label": "1_生活雜記",
-      "posts": [
-        {
-          "file": "1_生活雜記/20251228162105.md",
-          "title": "Category 11 — Beta",
-          "date": "2025-12-28",
-          "updated": "2025/12/29 19:40",
-          "excerpt": "Beta notes for new features."
-        }
-      ]
-    },
-    {
       "slug": "2_解開成就",
       "directory": "2_解開成就",
       "label": "2_解開成就",
