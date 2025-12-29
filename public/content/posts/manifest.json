@@ -6,8 +6,8 @@
         "file": "default/20251228215002.md",
         "title": "2025 年度職涯復盤",
         "date": "2025-12-29",
-        "updated": "2025/12/29 08:51",
-        "excerpt": "<img src=\"https://img.wnlin.org/blog/d67b99e8087319691404fb9eb49cb4a5.png\" style=\"width:80%; height:auto;\" alt=\"\" />\n## 開場\n- 今年的總結句、關鍵形容詞\n- 印象最深的一幕與原因\n## 今年的成長\n- 心態：最重要的認知轉折、怎麼形成的\n- 能力：刻意練習或突破案例（工作/創作/生活）\n- 人際：關鍵關係的變化與維護方式\n## 今年的作品／成果\n- 工作專案：做了什麼、最自豪的細節、可量化指標"
+        "updated": "2025/12/29 15:08",
+        "excerpt": "<img src=\"https://img.wnlin.org/blog/d67b99e8087319691404fb9eb49cb4a5.png\" style=\"width:80%; height:auto;\" alt=\"\" />\n## 開場\n- 抬頭苦幹，接受一切發生，知道自己的價值不靠別人認證，也對自己的選擇負責\n- 當我在想退休後要做什麼時，才突然意識到還有機會站在 2040 自己面前\n---\n## 職涯\n### 今年的成長\n- 心態：\n   - 就像早餐店阿姨喊帥哥那句開場白，獵頭總會把你在現職的長年經歷描述成稀缺的資產，但那十年到底是頭一年用了十年，還是每一年都有新的理解；這也讓我開始問自己，現在做的是「技術負責人」還是更像「技術領袖」。\n   - 搞技術如果沒前途，那就把焦點放在人際與判斷力；而朋友在面試過程裡提到主管在資料庫架構上的保守態度，也提醒我對於新領域的理解和開放性，就算沒有了員工識別證，都應該要持續經營的人力。"
       }
     ]
   },
@@ -21,8 +21,8 @@
           "file": "1_category/20251228162105.md",
           "title": "Category 11 — Beta",
           "date": "2025-12-28",
-          "updated": "2025/12/29 08:51",
-          "excerpt": "# Category 11 — Beta\nBeta notes for new features."
+          "updated": "2025/12/29 12:22",
+          "excerpt": "Beta notes for new features."
         }
       ]
     },
@@ -35,8 +35,8 @@
           "file": "2_category/20251228162105.md",
           "title": "Category 2 — Releases",
           "date": "2025-12-28",
-          "updated": "2025/12/29 08:51",
-          "excerpt": "# Category 2 — Releases\nPublic pages can now list releases with a dedicated feed."
+          "updated": "2025/12/29 12:22",
+          "excerpt": "Public pages can now list releases with a dedicated feed."
         }
       ]
     },
@@ -49,8 +49,8 @@
           "file": "3_category/20251228162105.md",
           "title": "Category 5 — Advanced Topics",
           "date": "2025-12-28",
-          "updated": "2025/12/29 08:51",
-          "excerpt": "# Category 5 — Advanced Topics\nDive into Workers, KV, and Markdown pipelines."
+          "updated": "2025/12/29 12:22",
+          "excerpt": "Dive into Workers, KV, and Markdown pipelines."
         }
       ]
     }
